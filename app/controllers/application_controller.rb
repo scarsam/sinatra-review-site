@@ -10,7 +10,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    "hello"
+    @user = User.first
+    erb :'index'
+
   end
 
 end

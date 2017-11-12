@@ -1,0 +1,8 @@
+<h1><%= @user.name %></h1>
+<ul>
+<% @user.reviews.each do |review| %>
+  <li><%= review.name %></li>
+  <li><%= review.content %></li>
+  <li><%= review.rating %></li>
+<% end %>
+</ul>
