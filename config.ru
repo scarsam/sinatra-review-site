@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use Sass::Plugin::Rack
 use ReviewsController
 use UsersController
 run ApplicationController
