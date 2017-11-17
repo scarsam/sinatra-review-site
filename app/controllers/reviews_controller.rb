@@ -19,8 +19,8 @@ class ReviewsController < ApplicationController
     redirect '/reviews'
   end
 
-  get '/reviews/:id/edit' do
-    @review = Review.find(params[:id])
+  get '/reviews/:slug/edit' do
+    @review = Review.find_by_slug(params[:slug])
     if current_user.id == @review.user_id
       erb :'/reviews/edit'
     else
@@ -28,21 +28,28 @@ class ReviewsController < ApplicationController
     end
   end
 
-  delete '/reviews/:id/delete' do
-    review = Review.find(params[:id])
+  delete '/reviews/:slug/delete' do
+    review = Review.find_by_slug(params[:slug])
     review.destroy
     redirect '/reviews'
   end
 
-  patch '/reviews/:id/edit' do
-    review = Review.find(params[:id])
+  patch '/reviews/:slug/edit' do
+    review = Review.find_by_slug(params[:slug])
     review.update(params[:review])
     redirect '/reviews'
   end
 
-  get '/reviews/:id' do
-    @review = Review.find(params[:id])
+  get '/reviews/:slug' do
+    @review = Review.find_by_slug(params[:slug])
     erb :'/reviews/show'
   end
+
+  get '/reviews/user/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'/reviews/user'
+  end
+
+
 
 end

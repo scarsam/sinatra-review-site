@@ -1,7 +1,9 @@
-<p><%= @review.name %></p>
-<p><%= @review.rating %></p>
-<p><%= @review.content %></p>
+<ul>
+  <li><strong>Name:</strong> <%= @review.name %></li>
+  <li><strong>Rating:</strong> <%= @review.rating %></li>
+  <li><strong>Description:</strong> <%= @review.content %></li>
+</ul>
 
-<% if current_user.id == @review.id  %>
-    <a class="button" href="/reviews/<%= @review.id %>/edit">Edit review</a>
+<% if current_user.id == @review.user_id  %>
+  <a class="button" href="/reviews/<%= @review.slug %>/edit">Edit review</a>
 <% end %>

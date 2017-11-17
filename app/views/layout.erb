@@ -3,20 +3,23 @@
 
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Rubik:700,900" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/styles.css"  type="text/css">
   </head>
 
   <body>
     <div class="container">
-      <header>
-        <h5><a href="/">APP NAME</a></h5>
+      <header class="flex align-center">
+        <h5 class="margin-bottom-none"><a class="logo" href="/">Review Capture</a></h5>
         <nav>
-          <ul>
-            <% if logged_in? %>
-              <li><a href="/logout">Log out</a></li>
-              <li><a href="/reviews">Reviews</a></li>
+          <% if logged_in? %>
+            <a href="/reviews/new">Write a review</a>
+            <a href="/reviews">All Reviews</a>
+            <% if current_user.reviews.any? %>
+              <a href="/reviews/user/<%= current_user.slug %>">My Reviews</a>
             <% end %>
-          </ul>
+            <a href="/logout">Log out</a>
+          <% end %>
         </nav>
       </header>
 
@@ -24,9 +27,6 @@
         <%= yield %>
       </main>
 
-      <footer>
-        <p>FOOTER TEXT</p>
-      </footer>
     </div>
   </body>
 </html>
