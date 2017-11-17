@@ -37,3 +37,5 @@ Helpers
 Concerns
   - slugify
   
+Add
+ - review.user.name

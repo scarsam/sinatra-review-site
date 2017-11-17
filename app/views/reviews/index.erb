@@ -8,6 +8,10 @@
     <a class="button" href="/reviews/<%= review.id %>">Read review</a>
     <% if current_user.id == review.user_id  %>
       <a class="button" href="/reviews/<%= review.id %>/edit">Edit review</a>
+      <form method="post" action="/reviews/<%= review.id %>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input class="button" type="submit" value="Delete review">
+      </form>
     <% end %>
     <hr>
   <% end %>

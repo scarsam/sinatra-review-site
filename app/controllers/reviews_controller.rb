@@ -28,6 +28,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  delete '/reviews/:id/delete' do
+    review = Review.find(params[:id])
+    review.destroy
+    redirect '/reviews'
+  end
+
   patch '/reviews/:id/edit' do
     review = Review.find(params[:id])
     review.update(params[:review])
