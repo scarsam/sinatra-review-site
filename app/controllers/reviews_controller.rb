@@ -13,9 +13,15 @@ class ReviewsController < ApplicationController
     erb :'/reviews/new'
   end
 
+  post '/reviews' do
+    user = User.find(session[:user_id])
+    user.reviews.create(params[:review])
+    redirect '/reviews'
+  end
+
   get '/reviews/:id/edit' do
     @review = Review.find(params[:id])
-    if current_user.id == @review.id
+    if current_user.id == @review.user_id
       erb :'/reviews/edit'
     else
       redirect :'/reviews'

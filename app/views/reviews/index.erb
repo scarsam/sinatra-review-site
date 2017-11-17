@@ -6,7 +6,7 @@
     <li><%= review.rating %></li>
     <li><%= review.content %></li>
     <a class="button" href="/reviews/<%= review.id %>">Read review</a>
-    <% if current_user.id == review.id  %>
+    <% if current_user.id == review.user_id  %>
       <a class="button" href="/reviews/<%= review.id %>/edit">Edit review</a>
     <% end %>
     <hr>

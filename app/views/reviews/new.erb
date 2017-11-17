@@ -1,1 +1,19 @@
-<h1>hello</h1>
+<form action="/reviews" method="POST">
+  <div class="row flex align-bottom">
+    <div class="three columns">
+      <label for="name">Review name</label>
+      <input class="u-full-width" name="review[name]" type="text" id="name">
+    </div>
+    <div class="three columns">
+      <label for="rating">Review rating</label>
+      <input class="u-full-width" name="review[rating]" type="text" id="rating">
+    </div>
+    <div class="three columns">
+      <label for="content">Review content</label>
+      <input class="u-full-width" name="review[content]" type="text" id="content">
+    </div>
+    <div class="three columns">
+      <input class="button-primary" type="submit" value="Submit review">
+    </div>
+  </div>
+</form>
