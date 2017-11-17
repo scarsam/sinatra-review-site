@@ -3,24 +3,29 @@
 
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css"  type="text/css">
   </head>
 
   <body>
-    <header>
-      <h1><a href="/">APP NAME</a></h1>
-      <nav>
-        <ul>
-          <li><a href="/logout">Log out</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="container">
+      <header>
+        <h5><a href="/">APP NAME</a></h5>
+        <nav>
+          <ul>
+            <% if logged_in? %>
+              <li><a href="/logout">Log out</a></li>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
 
-    <main>
-      <%= yield %>
-    </main>
+      <main>
+        <%= yield %>
+      </main>
 
-    <footer>
-      <p>FOOTER TEXT</p>
-    </footer>
+      <footer>
+        <p>FOOTER TEXT</p>
+      </footer>
+    </div>
   </body>
 </html>

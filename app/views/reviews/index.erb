@@ -1,1 +1,14 @@
-<h1>hello</h1>
+<h1>Welcome to the review site <%= @user.name %></h1>
+<a class="button button-primary" href="/reviews/new">Write a review</a>
+<ul>
+  <% Review.all.each do |review| %>
+    <li><%= review.name %></li>
+    <li><%= review.rating %></li>
+    <li><%= review.content %></li>
+    <a class="button" href="/reviews/<%= review.id %>">Read review</a>
+    <% if current_user.id == review.id  %>
+      <a class="button" href="/reviews/<%= review.id %>/edit">Edit review</a>
+    <% end %>
+    <hr>
+  <% end %>
+</ul>

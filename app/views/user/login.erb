@@ -1,8 +1,19 @@
 <% if flash.has?(:message) %>
     <strong><%= flash[:message] %></strong>
 <% end %>
+
 <form action="/login" method="POST">
-  <input type="text" name="user[email]" placeholder="Enter your email">
-  <input type="password" name="user[password]" placeholder="Enter your password">
-  <input type="submit" value="Log in">
+  <div class="row flex align-bottom">
+    <div class="four columns">
+      <label for="email">Your email</label>
+      <input class="u-full-width" name="user[email]" type="text" id="email">
+    </div>
+    <div class="four columns">
+      <label for="password">Your password</label>
+      <input class="u-full-width" name="user[password]" type="password" id="password">
+    </div>
+    <div class="four columns">
+      <input class="button-primary" type="submit" value="Log in">
+    </div>
+  </div>
 </form>

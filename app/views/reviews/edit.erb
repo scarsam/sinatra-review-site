@@ -1,0 +1,20 @@
+<form action="/reviews/<%= @review.id %>/edit" method="POST">
+  <input type="hidden" id="hidden" value="PATCH" name="_method">
+  <div class="row flex align-bottom">
+    <div class="three columns">
+      <label for="name">Review name</label>
+      <input class="u-full-width" value="<%= @review.name %>" name="review[name]" type="text" id="name">
+    </div>
+    <div class="three columns">
+      <label for="rating">Review rating</label>
+      <input class="u-full-width" value="<%= @review.rating %>" name="review[rating]" type="text" id="rating">
+    </div>
+    <div class="three columns">
+      <label for="content">Review content</label>
+      <input class="u-full-width" value="<%= @review.content %>" name="review[content]" type="text" id="content">
+    </div>
+    <div class="three columns">
+      <input class="button-primary" type="submit" value="Update review">
+    </div>
+  </div>
+</form>
