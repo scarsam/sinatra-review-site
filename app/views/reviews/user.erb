@@ -1,6 +1,6 @@
 <div class="row text-center margin-bottom-40px intro-section">
   <div class="column twelve">
-    <h3 class="margin-bottom-none">Here are your reviews <%= @user.name %></h3>
+    <h3 class="margin-bottom-none">Author: <%= @user.name.titleize %></h3>
   </div>
 </div>
 
@@ -9,11 +9,13 @@
       <li><strong>Name:</strong> <%= review.name %></li>
       <li><strong>Rating:</strong> <%= review.rating %></li>
       <a class="button button-primary" href="/reviews/<%= review.slug %>">Read review</a>
-      <a class="button" href="/reviews/<%= review.slug %>/edit">Edit review</a>
-      <form class="inline" method="post" action="/reviews/<%= review.slug %>/delete">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input class="button" type="submit" value="Delete review">
-      </form>
+      <% if current_user.id == review.user_id  %>
+        <a class="button" href="/reviews/<%= review.slug %>/edit">Edit review</a>
+        <form class="inline" method="post" action="/reviews/<%= review.slug %>/delete">
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input class="button" type="submit" value="Delete review">
+        </form>
+      <% end %>
       <hr>
   <% end %>
 </ul>

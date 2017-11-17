@@ -1,6 +1,6 @@
 <div class="row text-center margin-bottom-40px intro-section">
   <div class="column twelve">
-    <h3 class="margin-bottom-none">Welcome to the review site <%= @user.name %></h3>
+    <h3 class="margin-bottom-none">Welcome to the review site <%= @user.name.titleize %></h3>
   </div>
 </div>
 
@@ -8,6 +8,7 @@
   <% Review.all.each do |review| %>
     <li><strong>Name:</strong> <%= review.name %></li>
     <li><strong>Rating:</strong> <%= review.rating %></li>
+    <li><strong>Author:</strong> <a href="/reviews/user/<%= review.user.slug %>"><%= review.user.name.titleize %></a></li>
     <a class="button button-primary" href="/reviews/<%= review.slug %>">Read review</a>
     <% if current_user.id == review.user_id  %>
       <a class="button" href="/reviews/<%= review.slug %>/edit">Edit review</a>
