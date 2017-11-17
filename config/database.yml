@@ -3,9 +3,3 @@ development:
   encoding: unicode
   database: reviews_development
   pool: 5
-
-test:
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  database: reviews_test
