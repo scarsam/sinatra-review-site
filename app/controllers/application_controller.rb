@@ -4,17 +4,8 @@ class ApplicationController < Sinatra::Base
   configure do
     enable :sessions
     set :session_secret, "review_secret"
-    set :public_folder, 'public'
+    set :public_folder, File.join(APP_ROOT, 'public')
     set :views, 'app/views'
-  end
-
-  configure :production do
-    use Rack::Static,
-        urls: ['/stylesheets'],
-        root: File.expand_path('../tmp', __FILE__)
-
-    Sass::Plugin.options.merge!(template_location: 'public/stylesheets/sass',
-                                css_location: 'tmp/stylesheets')
   end
 
   get '/' do
