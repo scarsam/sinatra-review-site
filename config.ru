@@ -4,17 +4,22 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
-use Sass::Plugin::Rack
+use Rack::Static,
+    :urls => ["/images", "/js", "/css"],
+    :root => "public"
+run lambda { |env|
+  [
+    200,
+    {
+      'Content-Type'  => 'text/html',
+      'Cache-Control' => 'public, max-age=86400'
+    }
+  ]
+}
+
 Sass::Plugin.options[:style] = :compressed
-configure :production do
-  use Rack::Static,
-      urls: ['/stylesheets'],
-      root: File.expand_path('../tmp', __FILE__)
 
-  Sass::Plugin.options.merge!(template_location: 'public/stylesheets/sass',
-                              css_location: 'tmp/stylesheets')
-end
-
+use Sass::Plugin::Rack
 use Rack::MethodOverride
 use ReviewsController
 use UsersController
