@@ -1,4 +1,5 @@
 require './config/environment'
+use Sass::Plugin::Rack
 
 class ApplicationController < Sinatra::Base
   configure do

@@ -6,7 +6,6 @@ end
 
 Sass::Plugin.options[:style] = :compressed
 
-use Sass::Plugin::Rack
 use Rack::MethodOverride
 use ReviewsController
 use UsersController
