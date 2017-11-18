@@ -5,7 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::Static,
-    :urls => ["/images", "/js", "/css"],
+    :urls => ["/images", "/js", "/stylesheets"],
     :root => "public"
 run lambda { |env|
   [
