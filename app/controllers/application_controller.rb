@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
         urls: ['/stylesheets'],
         root: File.expand_path('../tmp', __FILE__)
 
-    Sass::Plugin.options.merge!(template_location: 'public/stylesheets/sass',
+    Sass::Plugin.options.merge!(template_location: 'public/stylesheets',
                                 css_location: 'tmp/stylesheets')
   end
 
