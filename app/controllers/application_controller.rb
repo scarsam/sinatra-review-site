@@ -1,5 +1,4 @@
 require './config/environment'
-use Sass::Plugin::Rack
 
 class ApplicationController < Sinatra::Base
   configure do
@@ -7,6 +6,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "review_secret"
     set :public_folder, 'public'
     set :views, 'app/views'
+  end
+  configure :production do
     use Rack::Static,
         urls: ['/stylesheets'],
         root: File.expand_path('../tmp', __FILE__)
