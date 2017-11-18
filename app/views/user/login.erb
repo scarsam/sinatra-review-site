@@ -1,5 +1,5 @@
 <% if flash.has?(:message) %>
-    <strong><%= flash[:message] %></strong>
+    <%= erb(:warning) %>
 <% end %>
 
 <form action="/login" method="POST">

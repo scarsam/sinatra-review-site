@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  use Rack::Flash
 
   get '/reviews' do
     if logged_in?
@@ -15,8 +16,14 @@ class ReviewsController < ApplicationController
 
   post '/reviews' do
     user = User.find(session[:user_id])
-    user.reviews.create(params[:review])
-    redirect '/reviews'
+    review = Review.new(params[:review])
+    if review.save
+      user.reviews << review
+      redirect '/reviews'
+    else
+      flash[:message] = "Please fill out the form to continue"
+      redirect '/reviews/new'
+    end
   end
 
   get '/reviews/:slug/edit' do
@@ -36,9 +43,16 @@ class ReviewsController < ApplicationController
 
   patch '/reviews/:slug/edit' do
     review = Review.find_by_slug(params[:slug])
-    review.update(params[:review])
-    redirect '/reviews'
+    review.update(rating: params[:review][:rating])
+    review.update(content: params[:review][:content])
+    if review.save
+      redirect '/reviews'
+    else
+      flash[:message] = "Please edit the form to continue"
+      redirect "/reviews/#{review.slug}/edit"
+    end
   end
+
 
   get '/reviews/:slug' do
     @review = Review.find_by_slug(params[:slug])

@@ -1,19 +1,32 @@
+<% if flash.has?(:message) %>
+  <%= erb(:warning) %>
+<% end %>
+
 <form action="/reviews" method="POST">
   <div class="row flex align-bottom">
-    <div class="three columns">
+    <div class="four columns">
       <label for="name">Review name</label>
       <input class="u-full-width" name="review[name]" type="text" id="name">
     </div>
-    <div class="three columns">
+
+    <div class="four columns">
       <label for="rating">Review rating</label>
-      <input class="u-full-width" name="review[rating]" type="text" id="rating">
+      <select class="u-full-width" name="review[rating]">
+        <% (1..10).each do |number| %>
+          <option><%= number %></option>
+        <% end %>
+      </select>
     </div>
-    <div class="three columns">
-      <label for="content">Review content</label>
-      <input class="u-full-width" name="review[content]" type="text" id="content">
+
+    <div class="four columns">
+      <label for="category">Review category</label>
+      <input class="u-full-width" name="review[category]" type="text" id="category">
     </div>
-    <div class="three columns">
-      <input class="button-primary" type="submit" value="Submit review">
-    </div>
+  </div>
+
+  <div class="twelve columns">
+    <label for="content">Review content</label>
+    <textarea class="u-full-width" name="review[content]" type="text" id="content"></textarea>
+    <input class="button-primary" type="submit" value="Submit review">
   </div>
 </form>

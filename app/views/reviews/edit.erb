@@ -1,20 +1,30 @@
+<% if flash.has?(:message) %>
+    <%= erb(:warning) %>
+<% end %>
+
 <form action="/reviews/<%= @review.slug %>/edit" method="POST">
   <input type="hidden" id="hidden" value="PATCH" name="_method">
   <div class="row flex align-bottom">
-    <div class="three columns">
-      <label for="name">Review name</label>
-      <input class="u-full-width" value="<%= @review.name %>" name="review[name]" type="text" id="name">
-    </div>
-    <div class="three columns">
+
+    <div class="six columns">
       <label for="rating">Review rating</label>
-      <input class="u-full-width" value="<%= @review.rating %>" name="review[rating]" type="text" id="rating">
+      <select class="u-full-width" name="review[rating]">
+        <% (1..10).each do |number| %>
+            <option><%= number %></option>
+        <% end %>
+      </select>
     </div>
-    <div class="three columns">
-      <label for="content">Review content</label>
-      <input class="u-full-width" value="<%= @review.content %>" name="review[content]" type="text" id="content">
-    </div>
-    <div class="three columns">
-      <input class="button-primary" type="submit" value="Update review">
+
+    <div class="six columns">
+      <label for="category">Review category</label>
+      <input class="u-full-width" value="<%= @review.category %>" name="review[category]" type="text" id="category">
     </div>
   </div>
+
+  <div class="twelve columns">
+    <label for="content">Review content</label>
+    <textarea class="u-full-width" name="review[content]" type="text" id="content"><%= @review.content %></textarea>
+    <input class="button-primary" type="submit" value="Update review">
+  </div>
+
 </form>
