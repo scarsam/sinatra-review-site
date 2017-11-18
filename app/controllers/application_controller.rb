@@ -1,7 +1,7 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  configure do
+  configure :production do
     enable :sessions
     set :session_secret, "review_secret"
     set :static, true
