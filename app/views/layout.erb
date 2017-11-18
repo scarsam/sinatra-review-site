@@ -14,9 +14,9 @@
         <nav>
           <% if logged_in? %>
             <a href="/reviews/new">Write a review</a>
-            <a href="/reviews">All Reviews</a>
+            <a href="/reviews">All reviews</a>
             <% if current_user.reviews.any? %>
-              <a href="/reviews/user/<%= current_user.slug %>">My Reviews</a>
+              <a href="/reviews/user/<%= current_user.slug %>">My reviews</a>
             <% end %>
             <a href="/logout">Log out</a>
           <% end %>

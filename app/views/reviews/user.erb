@@ -7,6 +7,7 @@
 <ul>
   <% @user.reviews.each do |review| %>
     <li><strong>Name:</strong> <%= review.name %></li>
+    <li><strong>Category:</strong> <%= review.category %></li>
     <li><strong>Rating:</strong> <%= review.rating %></li>
     <a class="button button-primary" href="/reviews/<%= review.slug %>">Read review</a>
     <% if current_user.id == review.user_id  %>
