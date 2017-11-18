@@ -1,6 +1,8 @@
 require './config/environment'
+require 'sass/plugin/rack'
 
 class ApplicationController < Sinatra::Base
+  use Sass::Plugin::Rack
   configure do
     enable :sessions
     set :session_secret, "review_secret"
