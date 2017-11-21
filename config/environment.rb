@@ -1,6 +1,10 @@
 require 'bundler/setup'
 Bundler.require
+require 'sprockets'
 require 'sinatra/activerecord/rake'
+require 'sinatra/asset_pipeline/task'
+require 'sinatra/asset_pipeline'
+require 'sinatra/sprockets-helpers'
 require 'rack-flash'
 require 'sass/plugin/rack'
 require_all 'app'

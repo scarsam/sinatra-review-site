@@ -1,12 +1,18 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  configure :production do
+  register Sinatra::Sprockets::Helpers
+  register Sinatra::AssetPipeline
+  set :sprockets, Sprockets::Environment.new('app')
+  set :assets_prefix, '/assets'
+  set :digest_assets, true
+
+  configure do
     enable :sessions
     set :session_secret, "review_secret"
-    set :static, true
     set :public_folder, 'public'
     set :views, 'app/views'
+    sprockets.append_path File.join('app', 'assets', 'stylesheets')
   end
 
   get '/' do
