@@ -1,18 +1,24 @@
 require './config/environment'
 
 class ApplicationController < Sinatra::Base
-  register Sinatra::Sprockets::Helpers
-  register Sinatra::AssetPipeline
-  set :sprockets, Sprockets::Environment.new('app')
+  set :sprockets, Sprockets::Environment.new('./')
+  set :assets_precompile, %w(application.css *.png *.jpg *.svg *.eot *.ttf *.woff *.woff2)
   set :assets_prefix, '/assets'
-  set :digest_assets, true
-
+  set :assets_paths, %w(../../assets)
+  set :assets_css_compressor, :sass
+  register Sinatra::AssetPipeline
+  register Sinatra::Sprockets::Helpers
   configure do
     enable :sessions
     set :session_secret, "review_secret"
     set :public_folder, 'public'
     set :views, 'app/views'
-    sprockets.append_path File.join('app', 'assets', 'stylesheets')
+    sprockets.append_path File.join(sprockets.root, '/assets', 'stylesheets')
+    Sprockets::Helpers.configure do |config|
+      config.environment = sprockets
+      config.prefix      = assets_prefix
+      config.public_path = public_folder
+    end
   end
 
   get '/' do
