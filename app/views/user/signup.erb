@@ -1,23 +1,23 @@
 <% if flash.has?(:message) %>
-    <%= erb(:warning) %>
+  <%= erb(:warning) %>
 <% end %>
 
 <form action="/signup" method="POST">
   <div class="row flex align-bottom">
     <div class="three columns">
       <label for="name">Your name</label>
-      <input class="u-full-width" name="user[name]" type="text" id="name">
+      <input class="u-full-width margin-bottom-none" name="user[name]" type="text" id="name">
     </div>
     <div class="three columns">
       <label for="email">Your email</label>
-      <input class="u-full-width" name="user[email]" type="text" id="email">
+      <input class="u-full-width margin-bottom-none" name="user[email]" type="text" id="email">
     </div>
     <div class="three columns">
       <label for="password">Your password</label>
-      <input class="u-full-width" name="user[password]" type="password" id="password">
+      <input class="u-full-width margin-bottom-none" name="user[password]" type="password" id="password">
     </div>
     <div class="three columns">
-      <input class="button-primary" type="submit" value="Log in">
+      <input class="button button-primary margin-bottom-none" type="submit" value="Sign up">
     </div>
   </div>
 </form>

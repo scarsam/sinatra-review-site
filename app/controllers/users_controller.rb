@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect '/reviews'
     else
       flash[:message] = "No account found"
-      redirect '/login'
+      erb :'user/login'
     end
   end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       redirect '/reviews'
     else
       flash[:message] = "Please fill out the form"
-      redirect '/signup'
+      erb :'/user/signup'
     end
   end
 
