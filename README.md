@@ -18,6 +18,11 @@ Create database, seed database:
 rake db:create:all
 ```
 
+Migrate database:
+```
+rake db:migrate
+```
+
 Run local server:
 ```
 shotgun
