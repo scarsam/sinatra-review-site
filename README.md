@@ -1,6 +1,6 @@
 ## Sinatra Review Application (CRUD)
 
-This Sinatra Application is running using Postgres and assets are compiled and served with help from Sprockets. To get the application running do following:
+This Sinatra Application is running using Postgres and assets are compiled and served with help from Sprockets. Visit `https://sinatra-review-site.herokuapp.com/` to see live version. To get the application running locally do following:
 
 # Installation
 Clone repo to your local machine:
