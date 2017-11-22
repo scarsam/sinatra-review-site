@@ -23,6 +23,11 @@ Migrate database:
 rake db:migrate
 ```
 
+Seed database from `seeds.rb`:
+```
+rake db:seed
+```
+
 Run local server:
 ```
 shotgun
