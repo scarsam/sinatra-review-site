@@ -7,4 +7,5 @@
 
 <% if current_user.id == @review.user_id  %>
   <a class="button" href="/reviews/<%= @review.slug %>/edit">Edit review</a>
+  <a class="button" href="/reviews/<%= @review.slug %>/delete">Delete review</a>
 <% end %>
