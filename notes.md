@@ -1,16 +1,24 @@
 Review Crud App
 
+A review has many comments. A comment belongs to a User and a Review. A user has many comment
+
 Models
   User
     - has_many reviews
+    - has_many comments
     - name
     - email
     - password
   Reviews
-    - belongs_to users
+    - belongs_to user
+    - has_many comments
     - name
     - content
     - rating
+  Comments
+    - belongs_to user
+    - belongs_to review
+    - content
     
 Routes
   Home

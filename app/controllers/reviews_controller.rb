@@ -54,7 +54,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   get '/reviews/:slug' do
     @review = Review.find_by_slug(params[:slug])
     erb :'/reviews/show'

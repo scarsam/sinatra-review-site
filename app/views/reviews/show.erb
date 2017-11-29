@@ -9,3 +9,22 @@
   <a class="button" href="/reviews/<%= @review.slug %>/edit">Edit review</a>
   <a class="button" href="/reviews/<%= @review.slug %>/delete">Delete review</a>
 <% end %>
+
+<h5 class="margin-bottom-10px">Comments: </h5>
+<% @review.comments.each do |comment| %>
+  <div class="margin-bottom-20px">
+    <p class="margin-bottom-none"><%= comment.content %></p>
+    <em>Posted by: <a href="/reviews/user/<%= comment.user.slug %>"><%= comment.user.name %></a></em>
+    <hr>
+  </div>
+<% end %>
+
+<form action="/reviews/<%= @review.slug %>/comments" method="POST">
+  <label for="comment">Comment:</label>
+  <textarea type="text" name="comment[content]" id="comment"></textarea><br>
+  <input type="submit" value="Submit">
+</form>
+
+<% if flash.has?(:message) %>
+    <%= erb(:warning) %>
+<% end %>

@@ -8,4 +8,5 @@ use Sass::Plugin::Rack
 use Rack::MethodOverride
 use ReviewsController
 use UsersController
+use CommentsController
 run ApplicationController
