@@ -45,6 +45,7 @@ class ReviewsController < ApplicationController
     review = Review.find_by_slug(params[:slug])
     review.update(rating: params[:review][:rating])
     review.update(content: params[:review][:content])
+    review.update(category: params[:review][:category])
     if review.save
       redirect '/reviews'
     else
