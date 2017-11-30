@@ -9,6 +9,7 @@
     <li><strong>Name:</strong> <%= review.name %></li>
     <li><strong>Category:</strong> <%= review.category %></li>
     <li><strong>Rating:</strong> <%= review.rating %></li>
+    <li><strong>Comments:</strong> <%= review.comments.count %></li>
     <li><strong>Author:</strong> <a href="/reviews/user/<%= review.user.slug %>"><%= review.user.name.titleize %></a></li>
     <a class="button button-primary" href="/reviews/<%= review.slug %>">Read review</a>
     <% if current_user.id == review.user_id  %>

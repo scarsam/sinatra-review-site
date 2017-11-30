@@ -3,20 +3,26 @@
     <h3 class="margin-bottom-none">Author: <%= @user.name.titleize %></h3>
   </div>
 </div>
-
-<ul>
-  <% @user.reviews.each do |review| %>
-    <li><strong>Name:</strong> <%= review.name %></li>
-    <li><strong>Category:</strong> <%= review.category %></li>
-    <li><strong>Rating:</strong> <%= review.rating %></li>
-    <a class="button button-primary" href="/reviews/<%= review.slug %>">Read review</a>
-    <% if current_user.id == review.user_id  %>
-      <a class="button" href="/reviews/<%= review.slug %>/edit">Edit review</a>
-      <form class="inline" method="post" action="/reviews/<%= review.slug %>/delete">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input class="button" type="submit" value="Delete review">
-      </form>
+<% if @user.reviews.empty? %>
+  <div class="row text-center">
+    <h5>No reviews posted yet!</h5>
+  </div>
+<% else %>
+  <ul>
+    <% @user.reviews.each do |review| %>
+      <li><strong>Name:</strong> <%= review.name %></li>
+      <li><strong>Category:</strong> <%= review.category %></li>
+      <li><strong>Rating:</strong> <%= review.rating %></li>
+      <li><strong>Comments:</strong> <%= review.comments.count %></li>
+      <a class="button button-primary" href="/reviews/<%= review.slug %>">Read review</a>
+      <% if current_user.id == review.user_id  %>
+        <a class="button" href="/reviews/<%= review.slug %>/edit">Edit review</a>
+        <form class="inline" method="post" action="/reviews/<%= review.slug %>/delete">
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input class="button" type="submit" value="Delete review">
+        </form>
+      <% end %>
+      <hr>
     <% end %>
-    <hr>
-  <% end %>
-</ul>
+  </ul>
+<% end %>
